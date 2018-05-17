@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Smarta åkband</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string name="formats">Formats</string>
+    <string name="choose_formats">Choose Formats</string>
+    <string name="ok_button">OK</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="koppla_ett_band">Koppla ett band</string>
+    <string name="v_lkommen">Välkommen!</string>
+    <string name="plus">+</string>
+    <string name="sp_ra_band">Spåra band</string>
+    <string name="info_om_band">Tryck på namnet för att få mer information om bandet</string>
+    <string name="band_information">Tryck på namnet för mer information om det kopplade bandet. Då kan du även byta namn eller koppla bort det.</string>
+    <string name="map_information">Om du har fler namn än vad som syns i listan, bara skrolla horisontellt bland namnen för att hitta alla.</string>
+</resources>

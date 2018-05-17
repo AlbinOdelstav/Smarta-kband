@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/round">
+
+    <TextView
+        android:id="@+id/informationHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textSize="18sp"
+        android:textColor="#000"
+        android:text="Information"/>
+    
+    <TextView
+        android:id="@+id/informationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/informationHeader"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"/>
+
+    <CheckBox
+        android:id="@+id/informationCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
+        android:text="Visa inte det här meddelandet igen"
+        android:layout_below="@id/informationText" />
+
+    <TextView
+        android:id="@+id/informationOkBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/informationCheckBox"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="20dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:text="OK"/>
+</RelativeLayout>

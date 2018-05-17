@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item"
+    android:layout_width="wrap_content"
+    android:layout_height="45dp">
+
+    <RelativeLayout
+        android:id="@+id/bandItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp">
+
+        <View
+            android:id="@+id/bandColor"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true" android:background="@drawable/band_recyclerview_background_blue"/>
+
+        <TextView
+            android:id="@+id/bandName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/bandColor"
+            android:layout_toEndOf="@id/bandColor"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Namn"
+            android:textColor="#333"
+            android:textSize="16sp"/>
+
+        <View
+            android:id="@+id/backSeparator"
+            android:layout_toRightOf="@id/bandName"
+            android:layout_toEndOf="@id/bandName"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/colorPrimary"/>
+
+    </RelativeLayout>
+</FrameLayout>

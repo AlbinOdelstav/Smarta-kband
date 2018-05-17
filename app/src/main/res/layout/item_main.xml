@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:clickable="true"
+    android:focusable="true">
+
+    <RelativeLayout
+        android:id="@+id/bandItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/item_background"
+        android:elevation="2dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp">
+
+        <View
+            android:id="@+id/bandColor"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/band_recyclerview_background_blue" />
+
+        <TextView
+            android:id="@+id/bandName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/bandColor"
+            android:layout_toEndOf="@id/bandColor"
+            android:layout_toLeftOf="@id/linearLayout"
+            android:layout_toStartOf="@id/linearLayout"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:textAlignment="center"
+            android:text="Namn"
+            android:textColor="#333"
+            android:textSize="18sp"/>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/batteryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="100%" />
+
+            <ImageView
+                android:id="@+id/batteryIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:scaleType="fitCenter"
+                android:src="@drawable/battery" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</FrameLayout>
