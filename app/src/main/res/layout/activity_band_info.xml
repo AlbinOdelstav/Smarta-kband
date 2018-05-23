@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff">
 
-
-    <mehdi.sakout.fancybuttons.FancyButton
+    <!-- Tillbaka-knapp -->
+    <TextView
         android:id="@+id/backBtn"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_margin="10dp"
         android:onClick="backButtonClick"
-        fancy:fb_focusColor="#b9d5ff"
-        fancy:fb_fontIconResource="&#xf104;"
-        fancy:fb_fontIconSize="25sp"
-        fancy:fb_ghost="true"
-        fancy:fb_iconPosition="left"
-        fancy:fb_radius="30dp"
-        fancy:fb_text=" "
-        fancy:fb_textColor="#000">
-    </mehdi.sakout.fancybuttons.FancyButton>
+        android:text="@string/lt"
+        android:textAlignment="center"
+        android:textSize="25sp">
 
+    </TextView>
+
+    <!-- Bandets valda namn -->
     <TextView
         android:id="@+id/bandInfoName"
         android:layout_width="wrap_content"
@@ -36,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/bandInfoName"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginRight="30dp"
@@ -44,6 +40,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:background="@drawable/item_background"
         android:foreground="?android:attr/selectableItemBackground"
         android:elevation="2dp">
@@ -53,10 +50,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="Bandets batteri"
+            android:text="@string/bandets_batteri"
             android:textColor="#333"
             android:textSize="18sp"/>
 
+        <!-- Visar hur mycket tid batteriet har kvar -->
         <TextView
             android:id="@+id/bandInfoBattery"
             android:layout_width="wrap_content"
@@ -65,7 +63,7 @@
             android:layout_below="@+id/bandInfoBatteryText"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="100%"
+            android:text="@string/_100"
             android:textSize="32sp"/>
 
         <View
@@ -85,11 +83,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/separator"
             android:layout_centerHorizontal="true"
-            android:text="Tid kvar tills batteriet kopplas bort"
+            android:text="@string/tid_kvar_tills_batteriet_kopplas_bort"
             android:layout_margin="5dp"
             android:textColor="#333"
-            android:textSize="18dp"/>
+            android:textSize="18sp"/>
 
+        <!-- Visar hur mycket tid bandet har kvar -->
         <TextView
             android:id="@+id/bandInfoTime"
             android:layout_width="wrap_content"
@@ -97,88 +96,46 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/bandInfoTimeText"
             android:layout_marginTop="10dp"
-            android:text="8h 20m"
+            android:layout_marginBottom="10dp"
+            android:text="@string/_8h_20m"
             android:textSize="32sp"/>
 
-    </RelativeLayout>
-
-    <!--
-    <RelativeLayout
-        android:id="@+id/batteryLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bandInfoName"
-        android:layout_marginTop="70dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginEnd="30dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/round"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:elevation="2dp">
-        
-        <TextView
-            android:id="@+id/bandInfoBatteryText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="Bandets batteri"
-            android:textColor="#333"
-            android:textSize="18dp"/>
+        <View
+            android:id="@+id/separator2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_below="@id/bandInfoTime"
+            android:background="@color/colorPrimary"/>
 
         <TextView
-            android:id="@+id/bandInfoBattery"
+            android:id="@+id/bandInfoConnectedText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/separator2"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/bandInfoBatteryText"
-            android:layout_marginTop="10dp"
-            android:text="100%"
-            android:textSize="32sp"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/timeLeftLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/batteryLayout"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginEnd="30dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/round"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:elevation="2dp">
-
-        <TextView
-            android:id="@+id/bandInfoTimeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="Tid kvar tills batteriet kopplas bort"
+            android:text="@string/antal_uppkopplade_till_bandet"
             android:layout_margin="5dp"
             android:textColor="#333"
-            android:textSize="18dp"/>
+            android:textSize="18sp"/>
 
+        <!-- Visar hur många som är uppkollade till bandet -->
         <TextView
-            android:id="@+id/bandInfoTime"
+            android:id="@+id/bandInfoConnected"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/bandInfoTimeText"
+            android:layout_below="@id/bandInfoConnectedText"
             android:layout_marginTop="10dp"
-            android:text="8h 20m"
+            android:text="@string/_1"
             android:textSize="32sp"/>
-    </RelativeLayout>
--->
 
+    </RelativeLayout>
+
+    <!-- "Byt namn"-knapp -->
     <TextView
         android:id="@+id/changeNameBtn"
         android:layout_width="wrap_content"
@@ -195,10 +152,11 @@
         android:background="@drawable/item_background"
         android:foreground="?android:attr/selectableItemBackground"
         android:elevation="2dp"
-        android:text="Byt namn"
+        android:text="@string/byt_namn"
         android:textColor="#000"
         android:textSize="18sp"/>
 
+    <!-- "Koppla bort"-knapp-->
     <TextView
         android:id="@+id/disconnectBtn"
         android:layout_width="wrap_content"
@@ -214,7 +172,7 @@
         android:background="@drawable/item_background"
         android:foreground="?android:attr/selectableItemBackground"
         android:elevation="2dp"
-        android:text="Koppla bort"
+        android:text="@string/koppla_bort"
         android:textColor="#000"
         android:textSize="18sp"/>
 

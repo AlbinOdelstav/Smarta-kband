@@ -13,13 +13,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="15dp"
-        android:text="Mina kopplade band"
+        android:text="@string/mina_kopplade_band"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"/>
 
+    <!-- Kopplas till listan med de kopplade banden -->
     <FrameLayout
         android:id="@+id/content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/footer"
         android:layout_below="@id/connectedBandText"
@@ -40,13 +41,15 @@
             android:gravity="center"
             android:orientation="vertical">
 
+            <!-- Knapp till kartan -->
             <ImageButton
                 android:id="@+id/mapBtn"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:background="@drawable/round_button"
                 android:scaleType="fitCenter"
-                android:src="@drawable/map_icon" />
+                android:src="@drawable/map_icon"
+                android:contentDescription="@string/map" />
 
             <TextView
                 android:id="@+id/helpText"

@@ -8,29 +8,18 @@ import android.widget.TextView;
 
 import com.hallucind.smartaakband.R;
 
-/**
- * Created by albin on 2018-04-26.
- */
-
 public class ConnectingActivity extends AppCompatActivity implements Runnable {
-
-    TextView connectingTextView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connecting);
 
-        connectingTextView = findViewById(R.id.connectingTextView);
-
-        simulateConnection();
-    }
-
-    private void simulateConnection() {
         Thread thread = new Thread(this);
         thread.start();
     }
 
+    // Simulerar en förbindelse mellan ett band och appen
     @Override
     public void run() {
         int seconds = 0;
@@ -52,20 +41,14 @@ public class ConnectingActivity extends AppCompatActivity implements Runnable {
         ConnectingActivity.this.finish();
     }
 
+    // Uppdaterar texten "Kopplar band" med punkter
     private void setText(final String value) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                TextView connectingTextView = findViewById(R.id.connectingTextView);
                 connectingTextView.setText(value);
             }
         });
-    }
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode == KeyEvent.KEYCODE_BACK) {
-            return true;
-        }
-        return false;
     }
 }

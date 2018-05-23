@@ -18,10 +18,10 @@ public class BarcodeActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);
-        setContentView(R.layout.activity_barcode2);
         launchActivity(FullScannerFragmentActivity.class);
     }
 
+    // startar aktiviteten för kameran
     public void launchActivity(Class<?> clss) {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -35,6 +35,7 @@ public class BarcodeActivity extends AppCompatActivity {
         }
     }
 
+    // låter användaren godkänna att appen använder kameran så QR-kod kan skannas
     @Override
     public void onRequestPermissionsResult(int requestCode,  String permissions[], int[] grantResults) {
         switch (requestCode) {

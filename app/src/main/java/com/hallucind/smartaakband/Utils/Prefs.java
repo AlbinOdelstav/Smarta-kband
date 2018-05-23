@@ -3,10 +3,6 @@ package com.hallucind.smartaakband.Utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-/**
- * Created by albin on 2018-05-02.
- */
-
 public class Prefs {
 
     private static final String PREFS = "APP_PREFS";

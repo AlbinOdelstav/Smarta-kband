@@ -18,6 +18,7 @@ public class FullScannerFragmentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_full_scanner_fragment);
     }
 
+    // låter användaren koppla ett band genom att trycka på skärmen (för demonstration)
     public void toConnectingActivity(View view) {
         Intent intent = new Intent(FullScannerFragmentActivity.this, ConnectingActivity.class);
         startActivity(intent);

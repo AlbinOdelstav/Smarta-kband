@@ -3,6 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Text som frågar om användaren är säker på att koppla bort bandet-->
     <TextView
         android:id="@+id/connectingTextView"
         android:layout_width="wrap_content"
@@ -11,8 +12,9 @@
         android:layout_margin="40dp"
         android:textSize="28sp"
         android:gravity="center"
-        android:text="Är du säker på att du vill koppla bort Namn?"/>
+        android:text="@string/sure"/>
 
+    <!-- Ja-knapp-->
     <TextView
         android:id="@+id/confirmDisconnection"
         android:layout_width="wrap_content"
@@ -26,8 +28,9 @@
         android:onClick="confirmDisconnection"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
-        android:text="Ja"/>
+        android:text="@string/ja"/>
 
+    <!-- Nej-knapp-->
     <TextView
         android:id="@+id/cancelDisconnection"
         android:layout_width="wrap_content"
@@ -41,6 +44,6 @@
         android:onClick="cancelDisconnection"
         android:textColor="#888"
         android:textSize="18sp"
-        android:text="Nej"/>
+        android:text="@string/nej"/>
 
 </RelativeLayout>

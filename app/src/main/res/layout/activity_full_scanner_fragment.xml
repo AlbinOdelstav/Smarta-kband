@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,6 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- Kamera med barcode-skannare -->
         <fragment
             android:id="@+id/scanner_fragment"
             android:name="com.hallucind.smartaakband.Barcode.FullScannerFragment"
@@ -27,9 +26,10 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:textColor="#fff"
-                android:text="Skanna QR-kod" />
+                android:text="@string/skanna_qr_kod" />
         </RelativeLayout>
 
+        <!-- Knapp för att ta sig vidare utan att faktiskt skanna en QR-kod (för demonstration) -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:textColor="#fff"
-                android:text="Koden hittar du på bandets insida" />
+                android:text="@string/koden_hittar_du_p_bandets_insida" />
         </RelativeLayout>
     </RelativeLayout>
 </FrameLayout>

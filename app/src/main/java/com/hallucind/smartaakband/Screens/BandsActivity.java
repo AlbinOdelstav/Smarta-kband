@@ -17,10 +17,6 @@ import com.hallucind.smartaakband.RecyclerListFragment;
 import com.hallucind.smartaakband.Settings;
 import com.hallucind.smartaakband.Utils.Prefs;
 
-/**
- * Created by albin on 2018-04-22.
- */
-
 public class BandsActivity extends AppCompatActivity {
     RecyclerListFragment fragment;
     private boolean keyDownWasPressed;
@@ -32,6 +28,7 @@ public class BandsActivity extends AppCompatActivity {
 
         keyDownWasPressed = false;
 
+        // Skapar en lista med de kopplade banden
         if (savedInstanceState == null) {
             fragment = new RecyclerListFragment();
             getSupportFragmentManager().beginTransaction().add(R.id.content, fragment).commit();
@@ -47,7 +44,6 @@ public class BandsActivity extends AppCompatActivity {
     // Gör knappen för kartan tryckbar
     private void initializeMapBtn() {
         ImageButton newBandView = findViewById(R.id.mapBtn);
-
         newBandView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,6 +78,7 @@ public class BandsActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    // Initialiserar enhetens tillbaka-knapp
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_BACK) {

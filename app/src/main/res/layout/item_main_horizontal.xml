@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/item"
     android:layout_width="wrap_content"
@@ -15,12 +14,14 @@
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp">
 
+        <!-- Visar bandets färg-->
         <View
             android:id="@+id/bandColor"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_centerVertical="true" android:background="@drawable/band_recyclerview_background_blue"/>
+            android:layout_centerVertical="true"/>
 
+        <!-- Visar bandets valda namn-->
         <TextView
             android:id="@+id/bandName"
             android:layout_width="wrap_content"

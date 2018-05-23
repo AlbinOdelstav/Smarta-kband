@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff">
 
@@ -8,11 +9,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/newName"
-        android:text="Namnge band"
+        android:text="@string/namnge_band"
         android:layout_marginBottom="20dp"
         android:textSize="20sp"
         android:layout_centerHorizontal="true"/>
 
+    <!-- Låter användaren namnge sitt kopplade band -->
     <EditText
         android:id="@+id/newName"
         android:layout_width="match_parent"
@@ -29,9 +31,10 @@
         android:background="@drawable/round"
         android:inputType="textCapSentences|text"
         android:textAllCaps="false"
-        android:hint="Namn..."
+        android:hint="@string/namn"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
+    <!-- OK-knapp-->
     <TextView
         android:id="@+id/confirmNewName"
         android:layout_width="wrap_content"
@@ -42,8 +45,9 @@
         android:layout_margin="20dp"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
-        android:text="OK"/>
+        android:text="@string/ok"/>
 
+    <!-- Avbryt-knapp-->
     <TextView
         android:id="@+id/cancelNewName"
         android:layout_width="wrap_content"
@@ -54,5 +58,5 @@
         android:layout_margin="20dp"
         android:textColor="#888"
         android:textSize="18sp"
-        android:text="AVBRYT"/>
+        android:text="@string/avbryt"/>
 </RelativeLayout>

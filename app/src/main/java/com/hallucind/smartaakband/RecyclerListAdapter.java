@@ -1,8 +1,5 @@
 package com.hallucind.smartaakband;
 
-import android.app.Activity;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +8,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hallucind.smartaakband.Band.Band;
+import com.hallucind.smartaakband.Band.BandHandler;
 
 import java.util.ArrayList;
 
@@ -34,7 +32,7 @@ public class RecyclerListAdapter extends RecyclerView.Adapter {
 
             case 1:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_add, parent, false);
-                return new ItemViewHolder2(view);
+                return new addItemViewHolder(view);
         }
         view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_main, parent, false);
         return new ItemViewHolder(view);
@@ -46,17 +44,11 @@ public class RecyclerListAdapter extends RecyclerView.Adapter {
 
         if (!(safePosition == list.size()-1)) {
             ((ItemViewHolder) holder).nameView.setText(list.get(safePosition).getName());
-
-            GradientDrawable gd = new GradientDrawable();
-            gd.setShape(GradientDrawable.OVAL);
-            gd.setCornerRadius(4);
-            float[] color = new float[] {list.get(safePosition).getcolorID(), 1, 1};
-            gd.setColor(Color.HSVToColor(color));
-
-            ((ItemViewHolder) holder).bandColor.setBackground(gd);
+            ((ItemViewHolder) holder).bandColor.setBackground(BandHandler.getGradientDrawable(list, safePosition));
         }
     }
 
+    // Hanterar om det är ett band som ska visas i listan, eller "Lägg till ett band"-knappen
     @Override
     public int getItemViewType(int position) {
         if (position == list.size()-1) {
@@ -74,6 +66,7 @@ public class RecyclerListAdapter extends RecyclerView.Adapter {
         RecyclerListAdapter.clickListener = clickListener;
     }
 
+    // Initialiserar ett band
     public static class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public final TextView nameView;
@@ -94,11 +87,12 @@ public class RecyclerListAdapter extends RecyclerView.Adapter {
         }
     }
 
-    public static class ItemViewHolder2 extends RecyclerView.ViewHolder implements View.OnClickListener {
+    // Initialiserar "Lägg till ett band"-knappen
+    public static class addItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public final RelativeLayout bandItem;
 
-        public ItemViewHolder2(View itemView) {
+        public addItemViewHolder(View itemView) {
             super(itemView);
 
             itemView.setOnClickListener(this);
@@ -108,7 +102,7 @@ public class RecyclerListAdapter extends RecyclerView.Adapter {
             bandItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    clickListener.onAddNameClick(getAdapterPosition(), view);
+                    clickListener.onAddBandClick(getAdapterPosition(), view);
                 }
             });
         }
@@ -120,7 +114,7 @@ public class RecyclerListAdapter extends RecyclerView.Adapter {
     }
 
     public interface ClickListener {
-        void onAddNameClick(int position, View v);
+        void onAddBandClick(int position, View v);
         void onItemClick(int position, View v);
     }
 }

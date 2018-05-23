@@ -9,12 +9,6 @@ import android.widget.TextView;
 
 import com.hallucind.smartaakband.R;
 
-/**
- * Created by albin on 2018-05-04.
- *
- *
- */
-
 public class BandInfoActivity extends AppCompatActivity {
     private int id;
     private String name;
@@ -35,35 +29,27 @@ public class BandInfoActivity extends AppCompatActivity {
         }
     }
 
+    // Visar det valda namnet som rubrik
     private void setBandName(String name) {
         TextView bandNameTextView = findViewById(R.id.bandInfoName);
         bandNameTextView.setText(name);
     }
 
+    // Visar batteritiden
     private void setBandBattery(int battery) {
         String batteryText = battery + "%";
         TextView bandInfoBatteryTextView = findViewById(R.id.bandInfoBattery);
         bandInfoBatteryTextView.setText(batteryText);
     }
 
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode == KeyEvent.KEYCODE_BACK) {
-            Intent intent = new Intent(BandInfoActivity.this, BandsActivity.class);
-            startActivity(intent);
-            BandInfoActivity.this.finish();
-            return true;
-        }
-        return false;
-    }
-
+    // Initialiserar tillbaka-knappen
     public void backButtonClick(View view) {
         Intent intent = new Intent(BandInfoActivity.this, BandsActivity.class);
         startActivity(intent);
         BandInfoActivity.this.finish();
     }
 
+    // Initialiserar "Byt namn"-knappen
     public void changeName(View view) {
         Intent intent = new Intent(BandInfoActivity.this, NewNameActivity.class);
 
@@ -74,6 +60,7 @@ public class BandInfoActivity extends AppCompatActivity {
         BandInfoActivity.this.finish();
     }
 
+    // Initialiserar "Koppla bort"-knappen, startar aktivitet för bekräftelse
     public void disconnect(View view) {
         Intent intent = new Intent(BandInfoActivity.this, ConfirmDisconnection.class);
 
@@ -83,5 +70,15 @@ public class BandInfoActivity extends AppCompatActivity {
 
         startActivity(intent);
         BandInfoActivity.this.finish();
+    }
+
+    // Initialiserar enhetens tillbaka-knapp
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK) {
+            backButtonClick(null);
+            return true;
+        }
+        return false;
     }
 }

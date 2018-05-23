@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hallucind.smartaakband.Band.Band;
+import com.hallucind.smartaakband.Band.BandHandler;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,6 +24,7 @@ public class RecyclerListAdapterHorizontal extends RecyclerView.Adapter {
     public RecyclerListAdapterHorizontal(ArrayList<Band> list) {
         this.list.addAll(list);
 
+        // För att kunna visa enhetens position
         Band band = new Band("Du", 0);
         this.list.remove(this.list.size()-1);
         this.list.add(0, band);
@@ -41,14 +43,7 @@ public class RecyclerListAdapterHorizontal extends RecyclerView.Adapter {
         int safePosition = holder.getAdapterPosition();
 
         ((ItemViewHolder) holder).nameView.setText(list.get(safePosition).getName());
-
-        GradientDrawable gd = new GradientDrawable();
-        gd.setShape(GradientDrawable.OVAL);
-        gd.setCornerRadius(4);
-        float[] color = new float[] {list.get(safePosition).getcolorID(), 1, 1};
-        gd.setColor(Color.HSVToColor(color));
-
-        ((ItemViewHolder) holder).bandColor.setBackground(gd);
+        ((ItemViewHolder) holder).bandColor.setBackground(BandHandler.getGradientDrawable(list, safePosition));
     }
 
     @Override
@@ -56,6 +51,7 @@ public class RecyclerListAdapterHorizontal extends RecyclerView.Adapter {
         return list.size();
     }
 
+    // Initialiserar ett band
     public static class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public final TextView nameView;

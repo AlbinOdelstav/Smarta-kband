@@ -33,19 +33,15 @@ public class RecyclerListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         RecyclerView recyclerView = (RecyclerView) view;
-
-        LinearLayoutManager horizontalLayoutManagaer
-                = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-
-        recyclerView.setLayoutManager(horizontalLayoutManagaer);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         adapter.setOnItemClickListener(new RecyclerListAdapter.ClickListener() {
 
+            // Låter användaren koppla ett nytt band
             @Override
-            public void onAddNameClick(int position, View v) {
+            public void onAddBandClick(int position, View v) {
                 Intent intent = new Intent(getActivity(), BarcodeActivity.class);
                 startActivity(intent);
                 if (getActivity() != null) {
@@ -53,10 +49,10 @@ public class RecyclerListFragment extends Fragment {
                 }
             }
 
+            // Visar mer information om valt band
             @Override
             public void onItemClick(int position, View v) {
                 if (!(position == BandHandler.bands.size()-1)) {
-                    // mer info om valt band
                     Intent intent = new Intent(getActivity(), BandInfoActivity.class);
                     intent.putExtra("name", BandHandler.bands.get(position).getName());
                     intent.putExtra("battery", BandHandler.bands.get(position).getBattery());

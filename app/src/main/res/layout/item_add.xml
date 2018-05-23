@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/item"
     android:layout_width="match_parent"
@@ -23,23 +22,25 @@
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp">
 
+        <!-- "Lägg till"-knapp -->
         <TextView
             android:id="@+id/addBtn"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_centerVertical="true"
             android:gravity="center"
-            android:text="+"
+            android:text="@string/plus"
             android:textSize="18sp"
             android:textColor="@color/colorPrimary"
             android:background="@drawable/round_button"/>
 
+        <!-- "Lägg till"-text -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="Lägg till ett band"
+            android:text="@string/l_gg_till_ett_band"
             android:textSize="18sp"
             android:textColor="#333"/>
 

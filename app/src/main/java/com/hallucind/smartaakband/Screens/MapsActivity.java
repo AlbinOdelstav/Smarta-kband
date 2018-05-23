@@ -41,12 +41,9 @@ import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private static final String TAG = "MapActivity";
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
-
-    private boolean mLocationPermissionsGranted = false;
 
     private GoogleMap mMap;
     LocationManager locationManager;
@@ -66,6 +63,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
+    // Hämtar enhetens position
     private void initDeviceLocation() {
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
@@ -120,15 +118,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
+    // Sätter ut en marker på kartan
     private void getDeviceLocation(Location location) {
         double latitude = location.getLatitude();
         double longitude = location.getLongitude();
 
         LatLng latLng = new LatLng(latitude, longitude);
-        Geocoder geocoder = new Geocoder(getApplicationContext());
+       // Geocoder geocoder = new Geocoder(getApplicationContext());
 
-        try {
-            List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 1);
+    //    try {
+          //  List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 1);
          //   String str = addressList.get(0).getLocality() + " , ";
         //    mMap.addMarker(new MarkerOptions().position(latLng).title(str));
            mMap.addMarker(new MarkerOptions()
@@ -137,11 +136,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                    // .icon(BitmapDescriptorFactory.defaultMarker(100))
                     );
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10.2f));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+      //  } catch (IOException e) {
+     //       e.printStackTrace();
+     //   }
     }
 
+    // Skapar lista med de kopplade banden
     private void initRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.nameList);
@@ -150,13 +150,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         recyclerView.setAdapter(adapter);
     }
 
+    // Kollar om användaren tillåter appen att använda enhetens GPS (för demonstration)
     private void getLocationPermission() {
-       // Log.d(TAG, "getLocationPermission: getting location permissions");
-
         String[] permissions = {FINE_LOCATION, COURSE_LOCATION};
         if(ContextCompat.checkSelfPermission(this.getApplicationContext(), FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             if (ContextCompat.checkSelfPermission(this.getApplicationContext(), COURSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                mLocationPermissionsGranted = true;
                 initMap();
             } else {
                 ActivityCompat.requestPermissions(this, permissions, LOCATION_PERMISSION_REQUEST_CODE);
@@ -166,31 +164,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
+    // Visar kartan
     private void initMap() {
-        Log.d(TAG, "initMap: initializing map");
-
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(MapsActivity.this);
     }
 
+    // Kollar om användaren tillåter appen att använda enhetens GPS (för demonstration)
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        Log.d(TAG, "onRequestPermissionResult: called");
-        mLocationPermissionsGranted = false;
-
         switch (requestCode) {
             case LOCATION_PERMISSION_REQUEST_CODE:
                 if (grantResults.length > 0) {
                     for (int i = 0; i < grantResults.length; i++) {
                         if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
-                            mLocationPermissionsGranted = false;
-                           Log.d(TAG, "onRequestPermission: permission failed");
                             return;
                         }
                     }
-                    Log.d(TAG, "onRequestPermission: permission failed");
-                    mLocationPermissionsGranted = true;
-                    // initmap
                     initMap();
                 }
                 break;
@@ -202,6 +192,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
     }
 
+    // Initialisear tillbaka-knappen
     public void backButtonClick(View view) {
         Intent intent = new Intent(MapsActivity.this, BandsActivity.class);
         startActivity(intent);
